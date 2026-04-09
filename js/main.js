@@ -27,7 +27,11 @@ window.onload = () => {
 
     game = new Game(canvas, ctx, ui);
 
-    ui.btnPlay.addEventListener('click', () => game.startGame());
+    ui.btnPlay.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent the click from placing a tile immediately
+        console.log("Action: Start Game");
+        game.startGame();
+    });
     
     ui.btnInstructions.addEventListener('click', () => {
         ui.startMenu.classList.remove('active');
@@ -39,14 +43,39 @@ window.onload = () => {
         game.startGame();
     });
 
-    // Re-bind restart and launch to the new floating HUD buttons
-    ui.btnRestart.addEventListener('click', () => game.restartLevel());
-    if (ui.btnLaunch) {
-        ui.btnLaunch.addEventListener('click', () => game.launchShift());
+    // Centralized Navigation Listeners
+    if (ui.btnNext) {
+        ui.btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log("Action: Next Level");
+            game.nextLevel();
+        });
     }
-    ui.btnQuit.addEventListener('click', () => game.quitGame());
+
+    ui.btnRestart.addEventListener('click', (e) => {
+        e.stopPropagation();
+        console.log("Action: Restart Level");
+        game.restartLevel();
+    });
+
+    if (ui.btnLaunch) {
+        ui.btnLaunch.addEventListener('click', () => {
+            console.log("Action: Launch Shift");
+            game.launchShift();
+        });
+    }
+
+    ui.btnQuit.addEventListener('click', () => {
+        console.log("Action: Quit Game (HUD)");
+        game.quitGame();
+    });
+
     if (ui.btnQuitEnd) {
-        ui.btnQuitEnd.addEventListener('click', () => game.quitGame());
+        ui.btnQuitEnd.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log("Action: Quit Game (End Menu)");
+            game.quitGame();
+        });
     }
 
     // Keyboard and Button Gravity Selection

@@ -33,12 +33,14 @@ class Game {
     }
 
     nextLevel() {
+        console.log("Engine: Loading Next Level", this.levelNum + 1);
         this.levelNum++;
         this.difficulty += 1;
         this.loadLevel();
     }
 
     restartLevel() {
+        console.log("Engine: Restarting Level", this.levelNum);
         if (this.player) this.player.reset();
         this.gravityZones = [];
         this.ui.zonesDisplay.innerText = this.maxZones;
@@ -55,6 +57,7 @@ class Game {
     }
 
     quitGame() {
+        console.log("Engine: Quitting to Menu");
         this.state = 'MENU';
         this.ui.hud.classList.remove('active');
         this.ui.endMenu.classList.remove('active');
@@ -157,14 +160,12 @@ class Game {
             this.state = 'END';
             this.ui.endMenu.classList.add('active');
             this.ui.btnNext.innerText = "Retry Level";
-            this.ui.btnNext.onclick = () => this.restartLevel();
         } else if (this.player.won) {
             this.ui.endTitle.innerText = "Shift Complete";
             this.ui.endTitle.style.color = "var(--neon-green)";
             this.state = 'END';
             this.ui.endMenu.classList.add('active');
             this.ui.btnNext.innerText = "Next Level";
-            this.ui.btnNext.onclick = () => this.nextLevel();
         }
     }
 
