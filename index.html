@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity Zero</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="main-wrapper">
+        <div id="game-container">
+            <div id="ui-layer">
+                <!-- Start Menu -->
+                <div id="start-menu" class="screen active">
+                    <h1 class="glitch" data-text="GRAVITY ZERO">GRAVITY ZERO</h1>
+                    <p>Manipulate gravity to guide your avatar to the exit.</p>
+                    <div style="display: flex; gap: 20px;">
+                        <button id="btn-instructions" class="neon-btn">How to Play</button>
+                        <button id="btn-play" class="neon-btn">Play</button>
+                    </div>
+                </div>
+
+                <!-- Instructions Menu -->
+                <div id="instructions-menu" class="screen">
+                    <h2>HOW TO PLAY</h2>
+                    <div class="instructions-content" style="max-width: 600px; text-align: left; color: #ccc; font-size: 18px; margin-bottom: 30px; line-height: 1.6;">
+                        <p style="margin-bottom: 20px; text-align: left;">Welcome to <strong>Gravity Zero</strong>!</p>
+                        <ul style="margin-left: 20px;">
+                            <li style="margin-bottom: 10px;"><strong>Setup Phase</strong>: Place your gravity zones while the character is stationary.</li>
+                            <li style="margin-bottom: 10px;">Your goal is to guide them to the <span style="color: #00ff66;">green exit portal</span> while avoiding the <span style="color: red;">red hazards</span>.</li>
+                            <li style="margin-bottom: 10px;">Select a Gravity Direction (⬇️, ⬆️, ⬅️, ➡️) and click on the grid to deploy a zone.</li>
+                            <li style="margin-bottom: 10px;">Once ready, press <strong>LAUNCH SHIFT</strong> to start the movement!</li>
+                            <li style="margin-bottom: 10px;">The character moves based on the latest gravity zone they passed through.</li>
+                        </ul>
+                    </div>
+                    <button id="btn-play-from-inst" class="neon-btn">Start Game</button>
+                </div>
+                
+                <!-- In-Game HUD overlay (Fully Integrated Floating Dashboard) -->
+                <div id="hud" class="screen no-bg">
+                    <!-- Top Info Corner -->
+                    <div class="hud-top-left">
+                        Level: <span id="level-display">1</span>
+                    </div>
+                    <div class="hud-top-right">
+                        Zones: <span id="zones-display">3</span>
+                    </div>
+
+                    <!-- Unified Floating Control Bar (Bottom Center) -->
+                    <div class="floating-dock main-dock">
+                        <div class="dock-group">
+                            <span class="dock-label">GRAVITY</span>
+                            <div class="hud-bottom">
+                                <button class="grav-btn selected" data-dir="down" title="Downward Gravity">⬇️</button>
+                                <button class="grav-btn" data-dir="up" title="Upward Gravity">⬆️</button>
+                                <button class="grav-btn" data-dir="left" title="Leftward Gravity">⬅️</button>
+                                <button class="grav-btn" data-dir="right" title="Rightward Gravity">➡️</button>
+                            </div>
+                        </div>
+
+                        <div class="dock-separator"></div>
+
+                        <div class="dock-group">
+                            <span class="dock-label">OPERATIONS</span>
+                            <div class="hud-controls">
+                                <button id="btn-launch" class="neon-btn launch-btn">Launch Shift</button>
+                                <button id="btn-restart" class="neon-btn small">Restart</button>
+                                <button id="btn-quit" class="neon-btn small">Quit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level Complete / Game Over -->
+                <div id="end-menu" class="screen">
+                    <h2 id="end-title">Shift Complete</h2>
+                    <button id="btn-next" class="neon-btn" style="margin-bottom: 20px;">Next Level</button>
+                    <button id="btn-quit-end" class="neon-btn small">Quit to Menu</button>
+                </div>
+            </div>
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+        </div>
+    </div>
+
+    <!-- Engine Scripts -->
+    <script src="js/physics.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/solver.js"></script>
+    <script src="js/levelGenerator.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
