@@ -58,22 +58,33 @@ window.onload = () => {
         });
     });
 
-    canvas.addEventListener('click', (e) => {
-        console.log("Canvas Clicked:", e.clientX, e.clientY);
+    const gameContainer = document.getElementById('game-container');
+
+    gameContainer.addEventListener('click', (e) => {
+        console.log("Container Clicked:", e.clientX, e.clientY);
         if(game.state === 'PLAYING') {
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            console.log("Placement Coords:", x, y);
-            game.placeGravityZone(x, y);
+            
+            // Only place if inside canvas bounds
+            if (x >= 0 && x <= 800 && y >= 0 && y <= 600) {
+                console.log("Placement Coords:", x, y);
+                game.placeGravityZone(x, y);
+            }
         }
     });
 
-    canvas.addEventListener('mousemove', (e) => {
+    gameContainer.addEventListener('mousemove', (e) => {
         if(game.state === 'PLAYING') {
             const rect = canvas.getBoundingClientRect();
-            game.mouseX = e.clientX - rect.left;
-            game.mouseY = e.clientY - rect.top;
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (x >= 0 && x <= 800 && y >= 0 && y <= 600) {
+                game.mouseX = x;
+                game.mouseY = y;
+            }
         }
     });
 
