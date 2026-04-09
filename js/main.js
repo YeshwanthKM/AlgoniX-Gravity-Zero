@@ -33,15 +33,19 @@ window.onload = () => {
         game.startGame();
     });
     
-    ui.btnInstructions.addEventListener('click', () => {
-        ui.startMenu.classList.remove('active');
-        ui.instructionsMenu.classList.add('active');
-    });
+    if (ui.btnInstructions) {
+        ui.btnInstructions.addEventListener('click', () => {
+            ui.startMenu.classList.remove('active');
+            ui.instructionsMenu.classList.add('active');
+        });
+    }
 
-    ui.btnPlayFromInst.addEventListener('click', () => {
-        ui.instructionsMenu.classList.remove('active');
-        game.startGame();
-    });
+    if (ui.btnPlayFromInst) {
+        ui.btnPlayFromInst.addEventListener('click', () => {
+            ui.instructionsMenu.classList.remove('active');
+            game.startGame();
+        });
+    }
 
     // Centralized Navigation Listeners
     if (ui.btnNext) {
