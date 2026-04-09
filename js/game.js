@@ -93,8 +93,15 @@ class Game {
     }
 
     placeGravityZone(x, y) {
-        if (this.runState !== 'SETUP') return;
-        if (this.gravityZones.length >= this.maxZones) return;
+        console.log("Attempting placement at:", x, y, "State:", this.runState);
+        if (this.runState !== 'SETUP') {
+            console.log("Placement blocked: Not in SETUP mode");
+            return;
+        }
+        if (this.gravityZones.length >= this.maxZones) {
+            console.log("Placement blocked: Max zones reached");
+            return;
+        }
         
         const zoneSize = 60;
         this.gravityZones.push({

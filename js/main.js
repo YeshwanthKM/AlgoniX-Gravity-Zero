@@ -59,10 +59,12 @@ window.onload = () => {
     });
 
     canvas.addEventListener('click', (e) => {
+        console.log("Canvas Clicked:", e.clientX, e.clientY);
         if(game.state === 'PLAYING') {
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
+            console.log("Placement Coords:", x, y);
             game.placeGravityZone(x, y);
         }
     });

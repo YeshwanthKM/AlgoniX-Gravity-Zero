@@ -39,10 +39,11 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    padding: 0;
+    padding: 20px;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-y: auto;
 }
 
 #game-container {
@@ -104,9 +105,14 @@ canvas {
     pointer-events: none;
 }
 
-/* Floating HUD layout */
+/* Floating HUD layout - FORCE non-interactive to allow canvas clicks */
 #hud {
     padding: 30px;
+    pointer-events: none !important;
+}
+
+#hud * {
+    pointer-events: none !important;
 }
 
 .hud-top-left {
@@ -147,7 +153,7 @@ canvas {
     backdrop-filter: blur(8px);
     box-shadow: 0 5px 30px rgba(0,0,0,0.6);
     transition: transform 0.3s ease, opacity 0.3s ease;
-    margin-top: 25px; /* Creates spacing below the game area */
+    margin-bottom: 25px; /* Creates spacing ABOVE the game area */
 }
 
 .main-dock.active {
