@@ -58,6 +58,7 @@ class Game {
         this.state = 'MENU';
         this.ui.hud.classList.remove('active');
         this.ui.endMenu.classList.remove('active');
+        if (this.ui.mainDock) this.ui.mainDock.classList.remove('active');
         if (this.ui.instructionsMenu) this.ui.instructionsMenu.classList.remove('active');
         this.ui.startMenu.classList.add('active');
         this.player = null;
@@ -88,6 +89,7 @@ class Game {
         this.ui.startMenu.classList.remove('active');
         this.ui.endMenu.classList.remove('active');
         this.ui.hud.classList.add('active');
+        if (this.ui.mainDock) this.ui.mainDock.classList.add('active');
     }
 
     placeGravityZone(x, y) {

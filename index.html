@@ -46,31 +46,6 @@
                         Zones: <span id="zones-display">3</span>
                     </div>
 
-                    <!-- Unified Floating Control Bar (Bottom Center) -->
-                    <div class="floating-dock main-dock">
-                        <div class="dock-group">
-                            <span class="dock-label">GRAVITY</span>
-                            <div class="hud-bottom">
-                                <button class="grav-btn selected" data-dir="down" title="Downward Gravity">⬇️</button>
-                                <button class="grav-btn" data-dir="up" title="Upward Gravity">⬆️</button>
-                                <button class="grav-btn" data-dir="left" title="Leftward Gravity">⬅️</button>
-                                <button class="grav-btn" data-dir="right" title="Rightward Gravity">➡️</button>
-                            </div>
-                        </div>
-
-                        <div class="dock-separator"></div>
-
-                        <div class="dock-group">
-                            <span class="dock-label">OPERATIONS</span>
-                            <div class="hud-controls">
-                                <button id="btn-launch" class="neon-btn launch-btn">Launch Shift</button>
-                                <button id="btn-restart" class="neon-btn small">Restart</button>
-                                <button id="btn-quit" class="neon-btn small">Quit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Level Complete / Game Over -->
                 <div id="end-menu" class="screen">
                     <h2 id="end-title">Shift Complete</h2>
@@ -79,6 +54,30 @@
                 </div>
             </div>
             <canvas id="game-canvas" width="800" height="600"></canvas>
+        </div>
+
+        <!-- Unified Floating Control Bar (Now BELOW the game area) -->
+        <div class="floating-dock main-dock">
+            <div class="dock-group">
+                <span class="dock-label">GRAVITY</span>
+                <div class="hud-bottom">
+                    <button class="grav-btn selected" data-dir="down" title="Downward Gravity">⬇️</button>
+                    <button class="grav-btn" data-dir="up" title="Upward Gravity">⬆️</button>
+                    <button class="grav-btn" data-dir="left" title="Leftward Gravity">⬅️</button>
+                    <button class="grav-btn" data-dir="right" title="Rightward Gravity">➡️</button>
+                </div>
+            </div>
+
+            <div class="dock-separator"></div>
+
+            <div class="dock-group">
+                <span class="dock-label">OPERATIONS</span>
+                <div class="hud-controls">
+                    <button id="btn-launch" class="neon-btn launch-btn">Launch Shift</button>
+                    <button id="btn-restart" class="neon-btn small">Restart</button>
+                    <button id="btn-quit" class="neon-btn small">Quit</button>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -21,7 +21,8 @@ window.onload = () => {
         levelDisplay: document.getElementById('level-display'),
         zonesDisplay: document.getElementById('zones-display'),
         endTitle: document.getElementById('end-title'),
-        gravBtns: document.querySelectorAll('.grav-btn')
+        gravBtns: document.querySelectorAll('.grav-btn'),
+        mainDock: document.querySelector('.main-dock')
     };
 
     game = new Game(canvas, ctx, ui);
